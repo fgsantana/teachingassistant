@@ -9,8 +9,8 @@ import { AlunoService } from './aluno.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private alunoService: AlunoService){}
   aluno: Aluno = { nome: "Felipe", cpf: "12345", email: "f@cin.ufpe.br", github: "fgsantana" };
-  alunoService = new AlunoService();
   alunos: Aluno[] = [];
   cpfduplicado: boolean = false;
 
