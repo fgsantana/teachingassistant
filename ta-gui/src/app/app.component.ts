@@ -19,7 +19,6 @@ export class AppComponent {
       this.aluno = {nome: "", cpf: "", email: "",github: " " };
     } else {
       this.aluno.cpf = "";
-      console.log("same")
     }
  }
 }
