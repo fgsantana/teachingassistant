@@ -25,12 +25,11 @@
     <td><input [(ngModel)]="aluno.github"></td>
   </tr>
 </table>
-
-<ul>
+<ul class="alunos">
   <li *ngFor="let a of alunos">
-      <span>{{a.nome}}</span>,
-      <span>{{a.cpf}}</span>,
-      <span>{{a.email}}</span>,
-      <span>{{a.github}}</span>
+    <span>{{a.nome}}</span>,
+    <span>{{a.cpf}}</span>,
+    <span>{{a.email}}</span>,
+    <span>{{a.github}}</span>
   </li>
-  </ul>
+</ul>
