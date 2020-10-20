@@ -26,6 +26,16 @@ export class CadastroDeAlunos {
         return result;
     }
 
+    excluir(cpf:string): string{
+        if(this.alunos.find(a => a.cpf == cpf) !==null){
+            this.alunos=    this.alunos.filter(al => !(al.cpf==cpf))
+                return "Excluido com sucesso"
+        }
+        else{
+            return null
+        }
+    }
+
     getAlunos(): Aluno[] {
         return this.alunos;
     }

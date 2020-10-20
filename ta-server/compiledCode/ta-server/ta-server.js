@@ -36,7 +36,16 @@ taserver.put('/aluno', function (req, res) {
         res.send({ "failure": "O aluno não pode ser atualizado" });
     }
 });
-taserver.delete('/aluno/:cpf', function () { });
+taserver.delete('/aluno/:cpf', function (req, res) {
+    var cpfAExcluir = req.params.cpf;
+    var resposta = cadastro.excluir(cpfAExcluir);
+    if (resposta !== null) {
+        res.send({ "success": "O aluno foi excluido com sucesso" });
+    }
+    else {
+        res.send({ "failure": "O aluno não pode ser excluido" });
+    }
+});
 taserver.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });

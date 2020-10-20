@@ -26,6 +26,15 @@ class CadastroDeAlunos {
             result.copyFrom(aluno);
         return result;
     }
+    excluir(cpf) {
+        if (this.alunos.find(a => a.cpf == cpf) !== null) {
+            this.alunos = this.alunos.filter(al => !(al.cpf == cpf));
+            return "Excluido com sucesso";
+        }
+        else {
+            return null;
+        }
+    }
     getAlunos() {
         return this.alunos;
     }
