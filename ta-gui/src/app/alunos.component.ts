@@ -16,8 +16,14 @@ export class AlunosComponent implements OnInit {
     alunos: Aluno[] = [];
 
     cpfduplicado: boolean = false;
+    githubduplicado: boolean = false;
 
     criarAluno(a: Aluno): void {
+        if(this.alunos.find(al => al.github==a.github)){
+            this.githubduplicado=true;
+        }
+        else{
+
         this.alunoService.criar(a)
             .subscribe(
                 ar => {
@@ -30,17 +36,31 @@ export class AlunosComponent implements OnInit {
                 },
                 msg => { alert(msg.message); }
             );
+            alert("Já executei o criar e o subscribe!");
     }
+}
+excluir(a: Aluno): void{
+    this.alunoService.excluir(a.cpf).subscribe({
+        next: r => {
+            console.log("Aluno com cpf ",a.cpf, "excluido")
+       this.alunos =  this.alunos.filter(al => !(al.cpf==a.cpf))}
+            ,
+        error: err => console.log(err)
+    })
+}
 
     onMove(): void {
         this.cpfduplicado = false;
+        this.githubduplicado = false;
      }
 
     ngOnInit(): void {
         this.alunoService.getAlunos()
         .subscribe(
+            
           as => { this.alunos = as; },
-          msg => { alert(msg.message); }
+          msg => { alert(msg.message); },
+        
          );
 }
 
